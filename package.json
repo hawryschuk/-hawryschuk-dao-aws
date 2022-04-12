@@ -1,0 +1,36 @@
+{
+  "name": "@hawryschuk/dao-aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "author": "Hawryschuk, Alexander",
+  "license": "ISC",
+  "scripts": {
+    "hawryschuk": "npm link @hawryschuk/common @hawryschuk/dao @hawryschuk/redaction",
+    "postinstall": "npm run hawryschuk",
+    "test": "ts-mocha ddb.dao.spec.ts --timeout 200000",
+    "build": "npm run hawryschuk && tsc --outDir dist && hawryschuk --package-json",
+    "clean": "rm -rf dist/*",
+    "start": "nodemon --ignore dist --ignore node_modules --delay 2000ms --ext ts --exec \"npm run build && npm test\""
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@hawryschuk/common": "latest",
+    "@hawryschuk/dao": "latest",
+    "aws-sdk": "^2.624.0",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.9",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^13.7.4",
+    "@hawryschuk/redaction": "latest",
+    "ts-mocha": "^8.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1"
+  }
+}
